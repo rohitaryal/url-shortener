@@ -7,12 +7,35 @@ const app = new Router();
 app.get("/", async (req, res) => {
 	let query = req.url.searchParams.get("q");
 
-	if (query != null) {
+	if (query) {
 		let target = await URLS.get(query, "json");
-		return Response.redirect(target.url, 301);
+		if (target) {
+			target.visits += 1;
+			await URLS.put(query, JSON.stringify(target));
+			return Response.redirect(target.url, 301);
+		} else {
+			return new Response(null, {
+				status: 404,
+				statusText: "NOT FOUND",
+			});
+		}
 	}
+});
 
-	return res.html(html);
+app.get("/details", async (req, res) => {
+	let query = req.url.searchParams.get("q");
+
+	if (query) {
+		let target = await URLS.get(query, "json");
+		if (target) {
+			return res.json(target);
+		} else {
+			return new Response(null, {
+				status: 404,
+				statusText: "NOT FOUND",
+			})
+		}
+	}
 });
 
 app.post("/shorten", async (req, res) => {
@@ -37,6 +60,9 @@ app.post("/shorten", async (req, res) => {
 
 	await URLS.put(randomUrl, JSON.stringify({
 		url,
+		visits: 0,
+		creator: req.client.ipAddress,
+		date: new Date().toLocaleDateString(),
 	}));
 
 	randomUrl = `${req.url.protocol == "https:" ? "https://" : "http://"}${host}?q=${randomUrl}`;
