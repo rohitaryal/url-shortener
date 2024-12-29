@@ -87,6 +87,15 @@ export const html =
 		.result-holder::after {
 			content: '🔗';
 		}
+
+		.detail-holder {
+			padding: 8px;
+			border: 2px solid white;
+			border-radius: 10px;
+			width: fit-content;
+			text-decoration: none;
+			display: block;
+		}
 	</style>
 </head>
 
