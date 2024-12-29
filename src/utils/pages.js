@@ -132,6 +132,7 @@ export const html =
 					})
 					.catch(() => buttonMsg('&nbsp;&nbsp;FAILED&nbsp;&nbsp;'))
 				return;
+                button.innerText = 'SHORTEN';
 			}
 
 			fetch('/shorten', {
