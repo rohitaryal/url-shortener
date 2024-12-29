@@ -4,7 +4,7 @@ import { isValidUrl, randomPath } from "./utils/url.js";
 
 const app = new Router();
 
-app.get("/", async (req, res, env, ctx) => {
+app.get("/", async (req, res) => {
 	let query = req.url.searchParams.get("q");
 
 	if (query != null) {
@@ -15,7 +15,7 @@ app.get("/", async (req, res, env, ctx) => {
 	return res.html(html);
 });
 
-app.post("/shorten", async (req, res, env, ctx) => {
+app.post("/shorten", async (req, res) => {
 	let body, url;
 	let host = req.headers.get("host");
 
@@ -47,6 +47,5 @@ app.post("/shorten", async (req, res, env, ctx) => {
 });
 
 addEventListener("fetch", (event) => {
-	console.log(event);
-	event.respondWith(app.fetch(event.request, event.env, event.ctx));
+	event.respondWith(app.fetch(event.request));
 });
