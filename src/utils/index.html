@@ -180,7 +180,7 @@
 		}
 
 		function isShrinkedUrl(url) {
-			let regex = String.raw`^(http:\/\/|https:\/\/)${location.host}\/[a-zA-Z0-9]+`;
+			let regex = String.raw`^(http:\/\/|https:\/\/)${location.href}\/[a-zA-Z0-9-_]+`;
 			regex = new RegExp(regex);
 
 			return !!url.match(regex);
