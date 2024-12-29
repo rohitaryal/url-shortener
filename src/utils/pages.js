@@ -169,7 +169,6 @@ export const html =
 		}
 
 		function handleChange(e) {
-			console.log('A');
 			if (isShrinkedUrl(input.value)) {
 				button.innerText = 'DETAILS';
 			} else {
