@@ -20,6 +20,8 @@ app.get("/", async (req, res) => {
 			});
 		}
 	}
+
+	return res.html(html);
 });
 
 app.get("/details", async (req, res) => {
