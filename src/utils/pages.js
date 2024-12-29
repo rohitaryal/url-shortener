@@ -131,8 +131,8 @@ export const html =
 						detail.innerText = JSON.stringify(data);
 					})
 					.catch(() => buttonMsg('&nbsp;&nbsp;FAILED&nbsp;&nbsp;'))
-				return;
                 button.innerText = 'SHORTEN';
+				return;
 			}
 
 			fetch('/shorten', {
