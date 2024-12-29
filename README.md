@@ -1,7 +1,9 @@
-# url-shortener
+# url-shortener 🤏
 Simple basic url shortener based on cloudflare worker and KV storage.
 
-## Usage
+Try it out <a href="https://url-shortener.erucix.workers.dev">here</a> 🥶
+
+## Usage 🥱
 ```bash
 git clone https://github.com/rohitaryal/url-shortener.git
 cd url-shortener
