@@ -1,5 +1,5 @@
+import HTML from "./utils/index.html"; // Not normal but for cf worker
 import Router from "./utils/router";
-import { html } from "./utils/pages.js";
 import { isValidUrl, randomPath } from "./utils/url.js";
 
 const app = new Router();
@@ -21,7 +21,7 @@ app.get("/", async (req, res) => {
 		}
 	}
 
-	return res.html(html);
+	return res.html(HTML);
 });
 
 app.get("/details", async (req, res) => {
